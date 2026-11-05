@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple task manager to organize daily activities and track progress.">
+
+    <title>My Tasks | To-Do App</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <main class="app-container">
+        <header class="app-header">
+            <div>
+                <p class="eyebrow">STAY ORGANIZED</p>
+                <h1>My Tasks<span>.</span></h1>
+                <p class="subtitle">Small steps lead to big results.</p>
+            </div>
+
+            <div class="date-card">
+                <span class="date-label">TODAY</span>
+                <span id="current-date">Loading...</span>
+            </div>
+        </header>
+
+        <!-- Task summary -->
+        <section class="summary" aria-label="Task summary">
+            <div class="summary-card">
+                <span class="summary-label">Total Tasks</span>
+                <strong id="total-count">0</strong>
+            </div>
+
+            <div class="summary-card">
+                <span class="summary-label">Remaining</span>
+                <strong id="remaining-count">0</strong>
+            </div>
+
+            <div class="summary-card">
+                <span class="summary-label">Completed</span>
+                <strong id="completed-count">0</strong>
+            </div>
+        </section>
+
+        <!-- Add a task -->
+        <section class="add-section">
+            <h2>Add a New Task</h2>
+
+            <form id="task-form">
+                <label for="task-input" class="visually-hidden">
+                    Enter your task
+                </label>
+
+                <input
+                    type="text"
+                    id="task-input"
+                    placeholder="What do you need to do?"
+                    maxlength="200"
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit" class="add-button">
+                    + Add Task
+                </button>
+            </form>
+
+            <p id="form-message" class="form-message" aria-live="polite"></p>
+        </section>
+
+        <!-- Task list -->
+        <section class="tasks-section">
+            <div class="tasks-heading">
+                <div>
+                    <h2>Your Tasks</h2>
+                    <p>Manage your daily activities.</p>
+                </div>
+
+                <button
+                    type="button"
+                    id="clear-completed"
+                    class="clear-button"
+                >
+                    Clear Completed
+                </button>
+            </div>
+
+            <!-- Task filters -->
+            <div class="filters" aria-label="Filter tasks">
+                <button
+                    type="button"
+                    class="filter-button active"
+                    data-filter="all"
+                    aria-pressed="true"
+                >
+                    All
+                </button>
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="active"
+                    aria-pressed="false"
+                >
+                    Remaining
+                </button>
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="completed"
+                    aria-pressed="false"
+                >
+                    Completed
+                </button>
+            </div>
+
+            <ul id="task-list" class="task-list" aria-label="Your tasks">
+                <!-- JavaScript adds tasks here -->
+            </ul>
+
+            <div id="empty-state" class="empty-state">
+                <div class="empty-icon">✓</div>
+                <h3>No tasks yet</h3>
+                <p>Add your first task and start making progress.</p>
+            </div>
+
+            <p id="task-count-message" class="task-count-message"
+               aria-live="polite">
+                You have 0 tasks remaining.
+            </p>
+        </section>
+
+        <footer class="app-footer">
+            <p>Built with HTML, CSS and JavaScript.</p>
+            <p>Your tasks are saved in this browser.</p>
+        </footer>
+    </main>
+
+</body>
+</html>

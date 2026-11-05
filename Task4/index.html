@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search for a city and check its current weather conditions.">
+
+    <title>WeatherNow | Weather App</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <main class="weather-app">
+        <header class="app-header">
+            <a href="#" class="logo">Weather<span>Now</span></a>
+            <p>Simple weather, wherever you are.</p>
+        </header>
+
+        <section class="search-section">
+            <h1>Check the weather</h1>
+            <p>Enter a city to see its current conditions.</p>
+
+            <form id="weather-form">
+                <label for="city-input" class="visually-hidden">
+                    City name
+                </label>
+
+                <input
+                    type="text"
+                    id="city-input"
+                    placeholder="For example, Addis Ababa"
+                    maxlength="100"
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit" id="search-button">
+                    Search
+                </button>
+            </form>
+
+            <p id="status-message" role="status" aria-live="polite"></p>
+        </section>
+
+        <section
+            id="weather-result"
+            class="weather-result"
+            aria-label="Current weather"
+            hidden
+        >
+            <div class="location-heading">
+                <div>
+                    <p class="small-label">CURRENT WEATHER</p>
+                    <h2 id="city-name">City</h2>
+                    <p id="location-details" class="muted-text"></p>
+                </div>
+
+                <p id="weather-date" class="muted-text"></p>
+            </div>
+
+            <div class="main-weather">
+                <div>
+                    <p id="weather-description" class="weather-description">
+                        Weather conditions
+                    </p>
+
+                    <p class="temperature">
+                        <span id="temperature">--</span><span>°C</span>
+                    </p>
+
+                    <p class="muted-text">
+                        Feels like <span id="feels-like">--</span>°C
+                    </p>
+                </div>
+
+                <div class="weather-icon" id="weather-icon" aria-hidden="true">
+                    ☀️
+                </div>
+            </div>
+
+            <div class="weather-details">
+                <article class="detail-card">
+                    <span class="detail-icon" aria-hidden="true">💧</span>
+                    <p>Humidity</p>
+                    <strong><span id="humidity">--</span>%</strong>
+                </article>
+
+                <article class="detail-card">
+                    <span class="detail-icon" aria-hidden="true">💨</span>
+                    <p>Wind speed</p>
+                    <strong><span id="wind-speed">--</span> km/h</strong>
+                </article>
+
+                <article class="detail-card">
+                    <span class="detail-icon" aria-hidden="true">🌡️</span>
+                    <p>Wind direction</p>
+                    <strong><span id="wind-direction">--</span></strong>
+                </article>
+            </div>
+
+            <p class="data-source">
+                Weather data provided by Open-Meteo.
+            </p>
+        </section>
+
+        <footer class="app-footer">
+            <p>Built with HTML, CSS and JavaScript.</p>
+            <p>Weather data may differ slightly from local observations.</p>
+        </footer>
+    </main>
+
+</body>
+</html>
