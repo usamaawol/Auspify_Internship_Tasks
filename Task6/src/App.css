@@ -928,6 +928,7 @@ td:first-child {
 
 .dark-theme {
   background: #0f172a;
+  color: #e2e8f0;
 }
 
 .dark-theme .main-content {
@@ -945,24 +946,47 @@ td:first-child {
 .dark-theme .topbar h1,
 .dark-theme .panel h3,
 .dark-theme .metric-top h2,
-.dark-theme .page-heading h2 {
+.dark-theme .page-heading h2,
+.dark-theme .modal-heading h2,
+.dark-theme .customer-detail h3 {
   color: #f8fafc;
 }
 
 .dark-theme .dashboard-content,
 .dark-theme .dashboard-content p,
-.dark-theme .data-table td,
+.dark-theme table td,
+.dark-theme .pagination,
+.dark-theme .result-count,
+.dark-theme .product-name,
 .dark-theme .account-info dd,
+.dark-theme .customer-detail dd,
 .dark-theme .setting-toggle span strong {
   color: #cbd5e1;
 }
 
-.dark-theme .data-table th,
+.dark-theme table th {
+  color: #94a3b8;
+  border-color: #334155;
+  background: #0f172a;
+}
+
+.dark-theme table td {
+  border-color: #334155;
+}
+
+.dark-theme table td:first-child {
+  color: #e2e8f0;
+}
+
+.dark-theme .icon-button,
+.dark-theme .mobile-menu,
+.dark-theme .period-select,
 .dark-theme .search-input,
 .dark-theme .filter-select,
 .dark-theme .text-icon-button,
-.dark-theme .secondary-button {
-  color: #cbd5e1;
+.dark-theme .secondary-button,
+.dark-theme .form-stack input {
+  color: #e2e8f0;
   border-color: #475569;
   background: #0f172a;
 }
@@ -971,10 +995,80 @@ td:first-child {
   color: #e2e8f0;
 }
 
-.dark-theme .settings-panel .form-stack input {
+.dark-theme .form-stack label,
+.dark-theme .appearance-control {
+  color: #cbd5e1;
+}
+
+.dark-theme .modal-card {
   color: #e2e8f0;
-  border-color: #475569;
-  background: #0f172a;
+  border: 1px solid #334155;
+  background: #1e293b;
+}
+
+.dark-theme .modal-card .icon-button {
+  color: #cbd5e1;
+}
+
+.dark-theme .customer-detail > p,
+.dark-theme .customer-detail dt,
+.dark-theme .account-info dt,
+.dark-theme .setting-toggle span small,
+.dark-theme .product-name small {
+  color: #94a3b8;
+}
+
+.dark-theme .setting-toggle,
+.dark-theme .customer-detail dl > div,
+.dark-theme .account-info > div {
+  border-color: #334155;
+}
+
+.dark-theme .chart-badge {
+  color: #93c5fd;
+  background: #172554;
+}
+
+.dark-theme .recharts-cartesian-axis-tick text,
+.dark-theme .recharts-legend-item-text {
+  fill: #cbd5e1;
+}
+
+.dark-theme .recharts-cartesian-grid line {
+  stroke: #334155;
+}
+
+.dark-theme .recharts-default-tooltip {
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+  background: #1e293b !important;
+}
+
+.dark-theme .recharts-tooltip-label,
+.dark-theme .recharts-tooltip-item {
+  color: #e2e8f0 !important;
+}
+
+.dark-theme .dashboard-footer {
+  color: #94a3b8;
+}
+
+.dark-theme .table-wrapper {
+  scrollbar-color: #475569 #1e293b;
+  scrollbar-width: thin;
+}
+
+.dark-theme .table-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.dark-theme .table-wrapper::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+.dark-theme .table-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: #475569;
 }
 
 @media (max-width: 700px) {
