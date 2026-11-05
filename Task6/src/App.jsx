@@ -393,7 +393,7 @@ function App() {
   const [activePage, setActivePage] = useState("Overview");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [products, setProducts] = useState(() => loadSavedState("nexuspanel-products", initialProducts));
-  const [settings, setSettings] = useState(() => loadSavedState("nexuspanel-settings", initialSettings));
+  const [settings, setSettings] = useState(loadSettings);
 
   const currentData = dashboardData[period];
 
@@ -536,6 +536,28 @@ function loadSavedState(key, fallback) {
     console.error(`Unable to load ${key} from local storage.`, error);
     return fallback;
   }
+}
+
+function loadSettings() {
+  const settings = loadSavedState("nexuspanel-settings", initialSettings);
+
+  try {
+    const migrationKey = "nexuspanel-profile-migration-v2";
+
+    if (window.localStorage.getItem(migrationKey) !== "complete") {
+      const updatedSettings = {
+        ...settings,
+        name: initialSettings.name,
+        email: initialSettings.email
+      };
+      window.localStorage.setItem(migrationKey, "complete");
+      return updatedSettings;
+    }
+  } catch (error) {
+    console.error("Unable to migrate the saved profile settings.", error);
+  }
+
+  return settings;
 }
 
 function saveState(key, value) {

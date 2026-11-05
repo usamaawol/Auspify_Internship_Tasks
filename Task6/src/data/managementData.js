@@ -7,8 +7,8 @@ export const initialProducts = [
 ];
 
 export const initialSettings = {
-  name: "Usama Ahmed",
-  email: "usama@nexuspanel.com",
+  name: "User",
+  email: "userexample@gmail.com",
   emailNotifications: true,
   orderNotifications: true,
   weeklyReport: false,
