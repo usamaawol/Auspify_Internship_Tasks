@@ -137,15 +137,41 @@ function OrdersPage() {
 
 function ProductForm({ product, onSave, onClose }) {
   const [form, setForm] = useState(product || { name: "", category: "", price: "", stock: "", status: "Active" });
+  const [formError, setFormError] = useState("");
   const update = (key, value) => setForm((current) => ({ ...current, [key]: value }));
 
   function submit(event) {
     event.preventDefault();
+
+    const trimmedName = form.name.trim();
+    const trimmedCategory = form.category.trim();
+    const priceText = String(form.price).trim();
+    const stockText = String(form.stock).trim();
+    const price = Number(form.price);
     const stock = Number(form.stock);
+
+    if (!trimmedName || !trimmedCategory) {
+      setFormError("Product name and category are required.");
+      return;
+    }
+
+    if (!priceText || !Number.isFinite(price) || price < 0) {
+      setFormError("Price must be a valid number greater than or equal to zero.");
+      return;
+    }
+
+    if (!stockText || !Number.isInteger(stock) || !Number.isFinite(stock) || stock < 0) {
+      setFormError("Stock must be a whole number greater than or equal to zero.");
+      return;
+    }
+
+    setFormError("");
     onSave({
       ...form,
+      name: trimmedName,
+      category: trimmedCategory,
       id: product?.id || `PRD-${Date.now()}`,
-      price: Number(form.price),
+      price,
       stock,
       status: stock === 0 ? "Out of stock" : stock < 5 ? "Low stock" : "Active"
     });
@@ -160,6 +186,7 @@ function ProductForm({ product, onSave, onClose }) {
           <label>Price (ETB)<input required type="number" min="0" step="0.01" value={form.price} onChange={(event) => update("price", event.target.value)} /></label>
           <label>Stock quantity<input required type="number" min="0" step="1" value={form.stock} onChange={(event) => update("stock", event.target.value)} /></label>
         </div>
+        {formError ? <p role="alert" style={{ margin: 0, color: "#b91c1c", fontSize: "0.9rem" }}>{formError}</p> : null}
         <div className="modal-actions"><Button type="button" className="secondary-button" onClick={onClose}>Cancel</Button><Button type="submit" className="primary-button">Save product</Button></div>
       </form>
     </Modal>
